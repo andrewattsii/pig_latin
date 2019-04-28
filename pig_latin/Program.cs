@@ -6,9 +6,6 @@ namespace pig_latin
     {
         static void Main(string[] args)
         {
-
-            
-
             Console.WriteLine("Welcome to  the pig latin translator !\n \nEnter a line to be translated:");
             string sentence = Console.ReadLine();
             sentence.ToLower();
@@ -17,46 +14,32 @@ namespace pig_latin
 
             string[] words = lowerCase.Split();
             string vowels = "a" + "e" + "i" + "u";
+
             string pigLatin = "";
-            string pigLatin1 = "";
-
-
-            
-            
-
-                foreach (string word in words)
+            foreach (string word in words)
+            {
+                if (vowels.Contains(word[0]))
                 {
-                    if (vowels.Contains(word[0]))
+                    pigLatin += word + "way ";
+                    Console.WriteLine(pigLatin);
+                }
+                int counter = 0;
+                string pigLatin1 = word;
+                foreach (char c in pigLatin1)
+                {
+                    if (!vowels.Contains(c))
                     {
-                        pigLatin += word + "way ";
+                        counter++;
                     }
                     else
-                    {
-                        pigLatin1 = word;
-                        foreach (char c in pigLatin1)
-                        {
+                        break;
 
-                            if (!vowels.Contains(c))
-                            {
-                                pigLatin1 = word.Substring(1, word.Length -1) + word[1];
-                            }
-                            else
-                            {
-                                pigLatin1 = pigLatin1 + "ay";
-                                break;
-                            }
+                    pigLatin1 = word.Substring(counter) + word.Substring(0, counter) + "ay";
 
-                        }
-                        
-                    }
-
-                    Console.WriteLine($"{pigLatin} {pigLatin1}");
-                    
+                    Console.Write($" {pigLatin1}");
                 }
-               
-
-            
-            
-        }
+            }
+        }    
+        
     }
 }
