@@ -15,6 +15,7 @@ namespace pig_latin
             string[] words = lowerCase.Split();
             string vowels = "a" + "e" + "i" + "u";
 
+
             string pigLatin = "";
             foreach (string word in words)
             {
